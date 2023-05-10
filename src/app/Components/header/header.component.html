@@ -1,0 +1,17 @@
+<header class="color1 gradient container-fluid">
+  <app-nav></app-nav>
+  <section class="p-section slide-right" id="section">
+    <h1 class="text-big" (mouseover)="isHovering = true" (mouseleave)="isHovering = false" [ngClass]="{'anim-1': isHovering}">Hola Mundo.<br>Soy {{developer.nombre}} {{developer.apellido}}.</h1>
+    <h3 class="text-big py-3">{{developer.profesion}}</h3>
+    <p class="text-medium"> Soy un apasionado por la tecnología y la resolución de problemas por medio de ella.<br>
+      Estoy buscando oportunidades que me permitan desarrollarme como programador,<br>
+      proyectando para algun día en el futuro dedicarme al desarrollo back-end. <br>
+      Te invito a que sigas scrolleando para conocerme aún más.</p>
+    <p> <b> ¡Gracias por visitar mi portfolio! </b></p>
+    <div class="py-5">
+      <a href="#SobreMi" class="d-flex sin-deco"><i class="fa-solid fa-arrow-down color1 sin-deco"></i>
+      <h6 class="text-small p-1 px-2 color1">Conóceme</h6></a>
+    </div>
+  </section>
+  
+</header>

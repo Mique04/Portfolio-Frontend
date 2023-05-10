@@ -1,0 +1,32 @@
+a>i {
+    font-size: 25px;
+    transition: all 0.4s ease-in-out;
+  }
+  a>i:hover {
+    font-size: 30px;
+  }
+  
+span {
+  height: 45px;
+  font-size: 18px;
+  transition: all 0.4s ease-in-out;
+}
+span:hover {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+button {
+  font-size: 18px;
+  transition: all 0.4s ease-in-out;
+}
+button:hover {
+  font-weight: 900;
+}
+
+
+.trans-color:hover{
+  box-shadow: 6px 6px 3px 0px rgba(0,0,0,0.90);
+  background-color: #ece5e5;;
+  color: #252423;
+}

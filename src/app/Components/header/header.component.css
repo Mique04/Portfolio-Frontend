@@ -1,0 +1,18 @@
+header {
+  width: 100%;
+  position: relative;
+}
+section {
+  padding-top: 70px;
+}
+h1 {
+  font-size: 80px;
+}
+h1:hover.anim-1 {
+  /* Propiedades CSS aquí */
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+

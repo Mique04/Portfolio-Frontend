@@ -1,0 +1,316 @@
+<section class="container-fluid py-5 gradient">
+
+    <div class="anim-1 p-3 rounded">
+      <div class="bg-2">
+        <h1 class="text-big text-center anim-1">Skills</h1>
+      </div>
+    </div>
+
+
+    <section class="px-2">
+        <h2 class="text-big color1 mt-5 text-center">Tecnologías</h2>
+      <div class="row">
+      <aside class="d-flex" [class.flex-column]="screenWidth < 572" [class.aling-item-center]="screenWidth < 572" [class.justify-content-evenly]="screenWidth > 572" [ngClass]="{'col-lg-6': screenWidth > 572 && screenWidth < 1100, 'col-6': screenWidth <= 572 || screenWidth >= 1100 }">
+        <!-- JS -->
+            <div class="skill position-relative py-5">
+                <div class="outer">
+                    <div class="inner text-center py-4"><i class="fab fa-js"></i> <br>
+                        <h5 class="text-big">{{getValorPorcentaje("js")}}% {{updateProgressBar("js")}}</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#00000075" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="js"/>
+                    </svg>
+                </div>
+            </div>
+        <!-- TS -->
+            <div class="skill position-relative py-5" >
+                <div class="outer">
+                    <div class="inner text-center py-4"><img src="../../../assets/Iconos/icons8-typescript.svg" alt=""> <br> <h5 class="text-big">{{getValorPorcentaje("ts")}}% {{updateProgressBar("ts")}}</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#3f5042ab" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="ts"/>
+                    </svg>
+                </div>
+            </div>
+        <!-- JSON -->
+            <div class="skill position-relative py-5" >
+                <div class="outer">
+                    <div class="inner text-center py-4">
+                    <img src="../../../assets/Iconos/icons8-json-48.svg" alt="" style="height: 50px;">
+                    <h5 class="text-big">{{getValorPorcentaje("JSON")}}%</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#3f5042ab" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="JSON"/>
+                        {{updateProgressBar("JSON")}}
+                    </svg>
+                </div>
+            </div>
+        
+      </aside>
+      <aside class="d-flex" [class.flex-column]="screenWidth < 572" [class.aling-item-center]="screenWidth < 572" [class.justify-content-evenly]="screenWidth > 572" [ngClass]="{'col-lg-6': screenWidth > 572 && screenWidth < 1100, 'col-6': screenWidth <= 572 || screenWidth >= 1100 }">
+        <!-- AngularJS -->
+            <div class="skill position-relative py-5" >
+                <div class="outer">
+                    <div class="inner text-center py-4"><i class="fa-brands fa-angular"></i> <br> <h5 class="text-big">{{getValorPorcentaje('angular')}}%</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px" id="angular">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#3f5042ab" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="angular"/>
+                        {{updateProgressBar("angular")}}
+                    </svg>
+                </div>
+            </div>
+        <!-- HTML -->
+            <div class="skill position-relative py-5" >
+                <div class="outer">
+                    <div class="inner text-center py-4"><i class="fa-brands fa-html5"></i> <br> <h5 class="text-big">{{getValorPorcentaje("HTML")}}%</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#3f5042ab" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="HTML"/>
+                        {{updateProgressBar("HTML")}}
+                    </svg>
+                </div>
+            </div>
+        <!-- CSS -->
+            <div class="skill position-relative py-5" >
+                <div class="outer">
+                    <div class="inner text-center py-4"><i class="fab fa-css3"></i> <br> <h5 class="text-big">{{getValorPorcentaje("CSS")}}%</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#3f5042ab" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="CSS"/>
+                        {{updateProgressBar("CSS")}}
+                    </svg>
+                </div>
+            </div>
+      </aside>
+    </div>
+    <div class="row">
+      <aside class="d-flex" [class.flex-column]="screenWidth < 572" [class.aling-item-center]="screenWidth < 572" [class.justify-content-evenly]="screenWidth > 572" [ngClass]="{'col-lg-6': screenWidth > 572 && screenWidth < 1100, 'col-6': screenWidth <= 572 || screenWidth >= 1100 }">
+        <!-- JAVA -->
+            <div class="skill position-relative py-5" >
+                <div class="outer">
+                    <div class="inner text-center py-4"><i class="fab fa-java"></i> <br> <h5 class="text-big">{{getValorPorcentaje("java")}}%</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#3f5042ab" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="java"/>
+                        {{updateProgressBar("java")}}
+                    </svg>
+                </div>
+            </div>
+        <!-- SQL -->
+            <div class="skill position-relative py-5" >
+                <div class="outer">
+                    <div class="inner text-center py-4"><i class="fa-solid fa-database"></i> <br> <h5 class="text-big">{{getValorPorcentaje("SQL")}}%</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#3f5042ab" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="SQL"/>
+                        {{updateProgressBar("SQL")}}
+                    </svg>
+                </div>
+            </div>
+        <!-- SpringBoot -->
+            <div class="skill position-relative py-5" >
+                <div class="outer">
+                    <div class="inner text-center py-4">
+                    <img src="../../../assets/Iconos/spring-boot.png" style="height: 45px;" alt="">
+                    <h5 class="text-big">{{getValorPorcentaje("SpringBoot")}}%</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#3f5042ab" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="SpringBoot"/>
+                        {{updateProgressBar("SpringBoot")}}
+                    </svg>
+                </div>
+            </div>
+        
+      </aside>
+      <aside class="d-flex" [class.flex-column]="screenWidth < 572" [class.aling-item-center]="screenWidth < 572" [class.justify-content-evenly]="screenWidth > 572" [ngClass]="{'col-lg-6': screenWidth > 572 && screenWidth < 1100, 'col-6': screenWidth <= 572 || screenWidth >= 1100 }">
+        <!-- ChatGPT -->
+            <div class="skill position-relative py-5" >
+                <div class="outer">
+                    <div class="inner text-center py-4">
+                        <img src="../../../assets/Iconos/icons8-chatgpt.svg" alt="">
+                        <h5 class="text-big">{{getValorPorcentaje("ChatGPT")}}%</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#3f5042ab" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="ChatGPT"/>
+                        {{updateProgressBar("ChatGPT")}}
+                    </svg>
+                </div>
+            </div>
+
+            <!-- GITHUB -->
+            <div class="skill position-relative py-5" >
+                <div class="outer">
+                    <div class="inner text-center py-4"><i class="fab fa-github"></i> <br> <h5 class="text-big">{{getValorPorcentaje("Git")}}%</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#3f5042ab" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="Git"/>
+                        {{updateProgressBar("Git")}}
+                    </svg>
+                </div>
+            </div>
+        
+        <!-- Boostrap -->
+            <div class="skill position-relative py-5" >
+                <div class="outer">
+                    <div class="inner text-center py-4">
+                        <i class="fa-brands fa-bootstrap"></i>
+                        <h5 class="text-big">{{getValorPorcentaje("Boostrap")}}%</h5></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#1f2028" />
+                            <stop offset="100%" stop-color="#3f5042ab" />
+                        </linearGradient>
+                        </defs>
+                        <circle cx="80" cy="80" r="70" stroke-linecap="round" id="Boostrap"/>
+                        {{updateProgressBar("Boostrap")}}
+                    </svg>
+                </div>
+            </div>
+      </aside>
+    </div>
+   
+<!-- ----------------------------------------------------------- -->
+
+   <div class="row">
+    <h2 class="text-big color1 mt-5 text-center">Habilidades</h2>
+    <aside class="d-flex mb-5" [class.flex-column]="screenWidth < 572" [class.aling-item-center]="screenWidth < 572" [class.justify-content-evenly]="screenWidth > 572" [ngClass]="{'col-lg-6': screenWidth > 572 && screenWidth < 1100, 'col-6': screenWidth <= 572 || screenWidth >= 1100 }">
+<!-- SCRUM -->
+    <div class="skill position-relative py-5 my-5" >
+        <div class="outer">
+            <div class="inner text-center py-4">
+                <i class="fa-solid fa-arrows-spin"></i>
+                <h5 class="text-big">{{getValorPorcentaje("SCRUM")}}%</h5></div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                <defs>
+                <linearGradient id="GradientColor">
+                    <stop offset="0%" stop-color="#1f2028" />
+                    <stop offset="100%" stop-color="#3f5042ab" />
+                </linearGradient>
+                </defs>
+                <circle cx="80" cy="80" r="70" stroke-linecap="round" id="SCRUM"/>
+                {{updateProgressBar("SCRUM")}}
+            </svg>
+        </div>
+        <h4 class="text-center text-big mt-2">SCRUM</h4>
+    </div>
+
+<!-- Resolucion de Problemas -->
+    <div class="skill position-relative py-5 my-5" >
+        <div class="outer">
+            <div class="inner text-center py-4">
+                <i class="fa-solid fa-bug"></i>
+                <h5 class="text-big">{{getValorPorcentaje("Res-Problemas")}}%</h5></div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                <defs>
+                <linearGradient id="GradientColor">
+                    <stop offset="0%" stop-color="#1f2028" />
+                    <stop offset="100%" stop-color="#3f5042ab" />
+                </linearGradient>
+                </defs>
+                <circle cx="80" cy="80" r="70" stroke-linecap="round" id="Res-Problemas"/>
+                {{updateProgressBar("Res-Problemas")}}
+            </svg>
+        </div>
+        <h4 class="text-center text-big mt-2">Resolución de problemas</h4>
+    </div>
+   </aside>
+   <aside class="d-flex mb-5" [class.flex-column]="screenWidth < 572" [class.aling-item-center]="screenWidth < 572" [class.justify-content-evenly]="screenWidth > 572" [ngClass]="{'col-lg-6': screenWidth > 572 && screenWidth < 1100, 'col-6': screenWidth <= 572 || screenWidth >= 1100 }">
+<!-- Aprendizaje -->
+    <div class="skill position-relative py-5 my-5" >
+        <div class="outer">
+            <div class="inner text-center py-4">
+                <img src="../../../assets/Iconos/icons8-learning-50.svg" alt="" style="height: 48px;">
+                <h5 class="text-big">{{getValorPorcentaje("Aprendizaje")}}%</h5></div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                <defs>
+                <linearGradient id="GradientColor">
+                    <stop offset="0%" stop-color="#1f2028" />
+                    <stop offset="100%" stop-color="#3f5042ab" />
+                </linearGradient>
+                </defs>
+                <circle cx="80" cy="80" r="70" stroke-linecap="round" id="Aprendizaje"/>
+                {{updateProgressBar("Aprendizaje")}}
+            </svg>
+        </div>
+        <h4 class="text-center text-big mt-2">Rápido Aprendizaje</h4>
+    </div>
+
+<!-- Equipo -->
+    <div class="skill position-relative py-5 my-5" >
+        <div class="outer">
+            <div class="inner text-center py-4">
+                <i class="fa-solid fa-users-gear"></i>
+                <h5 class="text-big">{{getValorPorcentaje("Equipo")}}%</h5></div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                <defs>
+                <linearGradient id="GradientColor">
+                    <stop offset="0%" stop-color="#1f2028" />
+                    <stop offset="100%" stop-color="#3f5042ab" />
+                </linearGradient>
+                </defs>
+                <circle cx="80" cy="80" r="70" stroke-linecap="round" id="Equipo"/>
+                {{updateProgressBar("Equipo")}}
+            </svg>
+        </div>
+        <h4 class="text-center text-big mt-2">Trabajo en Equipo</h4>
+    </div>
+   </aside>
+  </div>
+ </section>
+</section>

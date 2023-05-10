@@ -1,0 +1,30 @@
+#divisor{
+    height: 5px;
+    margin-left: 25%;
+    margin-right: 25%;
+    
+}
+section {
+    box-sizing: border-box;
+}
+
+p {
+    font-size: 14px;
+}
+
+button {
+    font-size: 17px;
+    font-weight: 900;
+    text-decoration: underline;
+    background-color: black;
+    color: #e6e6e6;
+    transition: all 0.4s ease-in-out;
+}
+
+.trans-color:hover{
+    box-shadow: 6px 6px 3px 0px rgba(0,0,0,0.90);
+    background-color: #ece5e5;;
+    color: #252423;
+    font-size: 20px;
+  }
+  

@@ -1,0 +1,38 @@
+section {
+    position: relative;
+}
+
+img {
+    height: 325px;
+}
+
+h1 {
+    font-size: 65px;
+    z-index: 2;
+}
+p {
+    font-size: 14px;
+} 
+i {
+    font-size: 60px;
+}
+
+
+.dis-none{
+    display: none;
+}
+
+
+
+
+  
+
+
+@media screen and (max-width: 840px) {
+    .centro-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  }
+  

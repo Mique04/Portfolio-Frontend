@@ -1,0 +1,38 @@
+h1 {
+    font-size: 80px;
+}
+h6 {
+    font-size: 20px;
+    color: #52556b;
+    align-items: start;
+}
+input {
+    background-color: #1f2028;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 2px solid #fff;
+    border-right:  2px solid #1f2028;
+}
+
+input:focus {
+    outline: none;
+    background-color: #ffffff05;
+}
+
+button {
+    font-size: 17px;
+    font-weight: 900;
+    text-decoration: underline;
+    background-color: #1f2028;
+    color: #e6e6e6;
+    transition: all 0.4s ease-in-out;
+    border: 2px solid #52556b;
+}
+
+.trans-color:hover{
+    box-shadow: 6px 6px 3px 0px rgba(0,0,0,0.90);
+    background-color: #ece5e5;;
+    color: #252423;
+    font-size: 20px;
+  }

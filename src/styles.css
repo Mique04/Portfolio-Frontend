@@ -1,0 +1,174 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #1f2028
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #363742;
+    border-radius: 20px;
+  }
+  
+
+.text-small {
+    font-weight: 200;
+}
+.text-medium {
+    font-weight: 400;
+}
+.text-big {
+    font-weight: 600;
+}
+
+
+.sin-deco{
+    text-decoration: none;
+}
+.p-m-0 {
+    padding: 0px;
+    margin: 0px;
+}
+.p-section {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+.p-section-l {
+    padding-left: 15%;
+}
+.p-section-r {
+    padding-right: 15%;
+}
+
+
+.shadow1 {
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.65);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.65);
+    box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.65);
+}
+
+
+
+.color1 {
+    color: #1f2028;
+}
+.color2 {
+    color: #e6e6e6;
+}
+.color3 {
+  color: #ece5e5;
+}
+.color4 {
+  color: #26272e;
+}
+.color5 {
+  color: #000;
+}
+
+.gradient {
+  background: #ffffff;
+  background: linear-gradient(90deg, hsl(0, 0%, 100%) 15%, hsl(0, 0%, 90%) 100%);
+}
+
+.bg-1 {
+    background-color: #1f2028;
+}
+.bg-2 {
+    background-color: #e6e6e6;
+}
+.bg-3 {
+    background-color: #ece5e5;
+}
+.bg-4 {
+  background-color: #26272e;
+}
+
+
+
+.slide-right {
+    opacity: 0;
+    transform: translateX(-40%);
+    animation: slideRight 1.2s forwards;
+    animation-timing-function: ease-out;
+  }
+  
+  @keyframes slideRight {
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+  
+
+
+  .anim-1 {
+    background-image: url(../src/assets/Animaciones/mariano-werneck-lxlo92w-X7c-unsplash.jpg);
+    background-size: cover;
+    background-repeat: repeat;
+    background-blend-mode:hue;
+    animation: noise 7s infinite ease-in-out;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    z-index: 0;
+  }
+  
+  @keyframes noise {
+    0% {
+      background-color: #00000085;
+      background-position: 0 0;
+    }
+    20% {
+      background-color: rgb(0, 255, 0);
+    }
+    40% {
+      background-color: rgba(0, 0, 255, 0.459);
+    }
+    60% {
+      background-color: rgba(255, 0, 0, 0.452);
+    }
+    80% {
+      background-color: rgba(255, 255, 0, 0.486);
+    }
+    100% {
+      background-color: #ffffff6c;
+      background-position: 100% 100%;
+    }
+  }
+
+  .anim-2 {
+    background-image: url(../src/assets/Animaciones/mahdi-bafande-yvCzwf84amU-unsplash.jpg);
+    background-size: cover;
+    background-repeat: repeat;
+    animation: noise 10s infinite ease-in-out;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    z-index: 0;
+  }
+  
+  @keyframes noise {
+    0% {
+      background-color: #00000085;
+      background-position: 0 0;
+    }
+    20% {
+      background-color: rgb(0, 255, 0);
+    }
+    40% {
+      background-color: rgba(0, 0, 255, 0.459);
+    }
+    60% {
+      background-color: rgba(255, 0, 0, 0.452);
+    }
+    80% {
+      background-color: rgba(255, 255, 0, 0.486);
+    }
+    100% {
+      background-color: #ffffff6c;
+      background-position: 100% 100%;
+    }
+  }

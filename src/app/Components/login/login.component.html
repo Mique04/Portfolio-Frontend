@@ -1,0 +1,10 @@
+<section class="bg-4">
+    <div *ngIf="!(iniciarSesion || registrarse)">
+        <button (click)="ver_iniciarSesion()">Iniciar Sesión</button>
+        <button (click)="ver_registrarse()">Registrarse</button>
+    </div>
+    
+    <app-iniciar-sesion *ngIf="iniciarSesion"></app-iniciar-sesion>
+    <app-registrarse *ngIf="registrarse"></app-registrarse>
+
+</section>

@@ -1,0 +1,30 @@
+section {
+    position: relative;
+}
+
+img {
+    height: 100px;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+h1 {
+    font-size: 65px;;
+}
+p {
+    font-size: 15px;
+    font-weight: 900;
+    width: 75%;
+    margin-left: 26%;
+} 
+i {
+    font-size: 15px;
+}
+
+.carousel {
+  width: 80%;
+  margin: 0 auto;
+}
+.item {
+  border-radius: 5px;
+}
