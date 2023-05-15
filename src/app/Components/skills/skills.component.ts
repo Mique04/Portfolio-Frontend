@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ResizeService } from '../../resize.service';
+import { ResizeService } from '../../Service/Resize/resize.service';
 
 @Component({
   selector: 'app-skills',

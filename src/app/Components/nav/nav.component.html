@@ -14,8 +14,11 @@
      <span class="col-4 text-center color2 bg-1 rounded p-2 shadow1 trans-color" id="portfolio-mique"> Portfolio~Mique </span>
     <div class="col-4 d-flex justify-content-around" id="ingreso">
       <div>
-        <button type="button" class="bg-1 rounded color2 shadow1 p-2 mx-1 trans-color">
-          <i class="fas fa-sign-in"></i>
+        <button type="button" class="bg-1 rounded color2 shadow1 p-2 mx-1 trans-color"
+        (click)="!modoEdicion.edicion_activada ? modoEdicion.activarEdicion() : modoEdicion.DesactivarEdicion(); modoEdicion.NoEditar()">
+          Modo Edición
+          <i class="fa-solid fa-pencil" *ngIf="!modoEdicion.edicion_activada"></i>
+          <i class="fa-solid fa-circle-xmark" *ngIf="modoEdicion.edicion_activada"></i>
         </button>
       </div>
       <div class="dropdown">

@@ -8,6 +8,8 @@ export const environment = {
     messagingSenderId: '467854461462',
     measurementId: 'G-83PBPZ4HZY',
   },
-    production: false
+  production: true,
+  apiURL: "https://portfolio-backend-v22r.onrender.com/",
+  idPersona: 1,
   };
   

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ActivarSesionService } from './activar-sesion.service';
+import { ActivarSesionService } from '../Activar-Sesion/activar-sesion.service';
 
 describe('ActivarSesionService', () => {
   let service: ActivarSesionService;

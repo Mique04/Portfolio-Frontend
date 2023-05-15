@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
@@ -18,7 +17,8 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { IniciarSesionComponent } from './Components/iniciar-sesion/iniciar-sesion.component';
 import { RegistrarseComponent } from './Components/registrarse/registrarse.component';
-import { PortfolioComponent } from './Components/portfolio/portfolio.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,8 @@ import { PortfolioComponent } from './Components/portfolio/portfolio.component';
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

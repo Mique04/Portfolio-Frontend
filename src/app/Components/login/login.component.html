@@ -1,10 +1,12 @@
-<section class="bg-4">
-    <div *ngIf="!(iniciarSesion || registrarse)">
-        <button (click)="ver_iniciarSesion()">Iniciar Sesión</button>
-        <button (click)="ver_registrarse()">Registrarse</button>
+<section class="anim-1">
+    <div [ngClass]="screenWidth < 1300 ? (screenWidth < 900 ? 'h-50 w-75  p-3 centrarMidSmall' : (screenWidth < 600 ? 'h-100 w-100  p-1 centrarSmall' : 'h-50 w-50  p-3 centrarMidBig')) : 'h-50 w-25 p-3 centrarBig'"
+         class="shadow1 rounded-5 bg-2 slide-right position-absolute">
+            <h1 class="px-3 py-1 text-center">¡Bienvenidos a mi Portfolio!</h1>
+            <h6 class="px-3 py-1 text-center">Por favor seleccione una opción</h6>
+            <div class="d-flex justify-content-evenly py-5">
+                <button class=" color2 p-3 m-1 trans-color" routerLink="/iniciarSesion">Iniciar Sesión</button>
+                <button class=" color2 p-3 m-1 trans-color" routerLink="/registrarse">Registrarse</button>
+        </div>
     </div>
-    
-    <app-iniciar-sesion *ngIf="iniciarSesion"></app-iniciar-sesion>
-    <app-registrarse *ngIf="registrarse"></app-registrarse>
 
-</section>
+</section> 

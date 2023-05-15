@@ -16,6 +16,10 @@ p {
 i {
     font-size: 60px;
 }
+button {
+    border: none;
+    outline: none;
+  }
 
 
 .dis-none{

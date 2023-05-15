@@ -1,39 +1,44 @@
-<button (click)="no_ver_iniciarSesion()">Volver</button>
-<h1 class="text-big color2 p4">Iniciar Sesión</h1>
-<form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+<section class="anim-1">
+  <div [ngClass]="screenWidth < 1300 ? (screenWidth < 900 ? 'h-75 w-75  p-3 centrarMidSmall' : (screenWidth < 600 ? 'h-100 w-100  p-1 centrarSmall' : 'h-75 w-50  p-3 centrarMidBig')) : 'h-75 w-50 p-3 centrarBig'"
+  class="shadow1 rounded-5 bg-2 slide-right position-absolute"> 
+      <button routerLink="/login" type="button" class="color2 p-2 m-1 mx-3 trans-color" id="volver">Volver</button>
+      <h1 class="text-big text-center color1 px-4 py-1">Iniciar Sesión</h1>
+      
+        <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+          <div class="mb-3 p-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName='Email'
+            [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}">
+            <div *ngIf='Email?.errors && Email?.touched'>
+              <p *ngIf="Email?.hasError('required')" class="text-danger">
+                El email es requerido
+              </p>
+              <p *ngIf="Email?.hasError('email')" class="text-danger">
+                El formato del email debe ser valido
+              </p>
+            </div>
+          </div>
+      
+          <div class="mb-3 p-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName='Password'
+            [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}">
+            <div *ngIf='Password?.errors && Password?.touched'>
+              <p *ngIf="Password?.hasError('required')" class="text-danger">
+                La contraseña es requerida
+              </p>
+              <p *ngIf="Password?.hasError?.length" class="text-danger">
+                La contraseña debe ser de 8 o más caracteres
+              </p>
+            </div>
+          </div>
 
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName='Email'
-      [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}">
-      <div *ngIf='Email?.errors && Email?.touched'>
-        <p *ngIf="Email?.hasError('required')" class="text-danger">
-          el email es requerido
-        </p>
-        <p *ngIf="Email?.hasError('email')" class="text-danger">
-          el formato del email debe ser valido
-        </p>
-      </div>
-    </div>
+          <div class="mb-3 form-check mx-3">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
 
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" formControlName='Email'
-      [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}">
-      <div *ngIf='Password?.errors && Password?.touched'>
-        <p *ngIf="Password?.hasError('required')" class="text-danger">
-          La contraseña es requerida
-        </p>
-        <p *ngIf="Password?.hasError?.length" class="text-danger">
-          La contraseña debe ser de 8 o más caracteres
-        </p>
-      </div>
-    </div>
-
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-  </form>
+          <button type="submit" class="color2 p-3 m-1 mx-3 trans-color" (click)="onEnviar($event)">Iniciar Sesión</button>
+        </form> 
+  </div>
+</section>

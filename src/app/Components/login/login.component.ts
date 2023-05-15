@@ -1,26 +1,23 @@
-import { Component } from '@angular/core';
-
+import { Component, Injector, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ResizeService } from 'src/app/Service/Resize/resize.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
-  iniciarSesion:boolean = false;
-  ver_iniciarSesion() {
-    this.iniciarSesion = true;
-  }
-  no_ver_iniciarSesion() {
-    this.iniciarSesion = false;
-  }
+  screenWidth = 0;
+  public resizeSubscription: Subscription = new Subscription();
 
-  registrarse:boolean = false;
-  ver_registrarse(){
-    this.registrarse = true;
-  }
-  no_ver_registrarse(){
-    this.registrarse = false;
+  constructor(public injector: Injector, public resizeService: ResizeService) {}
+
+  ngOnInit() {
+    this.resizeService.windowWidth$.subscribe(width => {
+      console.log('El ancho de la ventana es:', width);
+      this.screenWidth = width;
+    }); 
   }
 }

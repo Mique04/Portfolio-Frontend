@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as $ from 'jquery';
 import 'slick-carousel';
 import { Subscription } from 'rxjs';
-import { ResizeService } from '../../resize.service';
+import { ResizeService } from '../../Service/Resize/resize.service';
 
 
 @Component({

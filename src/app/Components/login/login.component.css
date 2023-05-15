@@ -1,18 +1,36 @@
+section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 h1 {
-    font-size: 80px;
+ font-weight: 900;
 }
-h6 {
-    font-size: 20px;
-    color: #52556b;
-    align-items: start;
+h6{
+    color: #1f20288a;
 }
-input {
-    background-color: #1f2028;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    border-bottom: 2px solid #fff;
-    border-right:  2px solid #1f2028;
+
+
+.centrarBig {
+    height: 500%;
+    top: 25%;
+    left: 37.5%;
+}
+.centrarMidBig {
+    height: 50%;
+    top: 25%;
+    left: 25%;
+}
+.centrarMidSmall {
+    height: 50%;
+    top: 25%;
+    left: 12.5%;
+}
+.centrarSmall {
+    height: 75%;
+    top: 12.5%;
+    left: 12.5%;
 }
 
 input:focus {
@@ -22,17 +40,28 @@ input:focus {
 
 button {
     font-size: 17px;
-    font-weight: 900;
+    font-weight: 600;
     text-decoration: underline;
-    background-color: #1f2028;
+    background-color: #131313;
     color: #e6e6e6;
     transition: all 0.4s ease-in-out;
-    border: 2px solid #52556b;
+    border: 2px solid #1f20288a;
 }
 
 .trans-color:hover{
     box-shadow: 6px 6px 3px 0px rgba(0,0,0,0.90);
     background-color: #ece5e5;;
     color: #252423;
-    font-size: 20px;
+    font-size: 18px;
+  }
+
+  button:hover {
+    font-weight: 800;
+  }
+  
+  
+  .trans-color:hover{
+    box-shadow: 6px 6px 3px 0px rgba(0,0,0,0.90);
+    background-color: #ece5e5;;
+    color: #252423;
   }

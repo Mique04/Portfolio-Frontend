@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModoEdicionService } from 'src/app/Service/Modo-Edicion/modo-edicion.service';
 
 @Component({
   selector: 'app-nav',
@@ -17,6 +18,7 @@ export class NavComponent implements OnInit {
     this.mostrarComponenteLogin = false;
   }
   
+  constructor (public modoEdicion: ModoEdicionService){}
 
 
   ajustarResponsive(): void {
