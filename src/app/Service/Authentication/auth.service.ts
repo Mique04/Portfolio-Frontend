@@ -10,7 +10,7 @@ import { HttpResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  private API_URL = "https://portfolio-backend-v22r.onrender.comng";
+  private API_URL = "https://portfolio-backend-v22r.onrender.com";
   currentUserSubjet: BehaviorSubject<any>;
   constructor(private Http:HttpClient, private ruta: Router) {
     console.log("El servicio de autenticación está corriendo");
@@ -38,7 +38,6 @@ IniciarSesion(credenciales: any): Observable<any> {
     map((response: HttpResponse<any>) => {
       if (response.status >= 200 && response.status < 300) {
         sessionStorage.setItem('currentUser', JSON.stringify(response.body));
-        this.ruta.navigate(['/portfolio']);
         this.UsuarioActivo = true;
         return true
       }

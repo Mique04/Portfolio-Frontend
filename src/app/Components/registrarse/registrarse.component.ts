@@ -41,18 +41,21 @@ export class RegistrarseComponent implements OnInit {
 
   onEnviar(event: Event){
     event.preventDefault();
-    this.authServ.Registrarse(this.form.value).subscribe(data=>{
-      console.log("DATA:" + JSON.stringify(data));
-    })
+    this.authServ.Registrarse(this.form.value).subscribe(response => {
+        console.log("RESPONSE:" + JSON.stringify(response));
+        if (response.status < 200 || response.status >= 300) {
+          this.mostrar();
+        }
+       }
+      )
+  }
     
+  MostrarPortfolio: boolean = false;
+  mostrar(){
+    this.MostrarPortfolio = true
   }
-
-  Alerta: boolean = false;
-  mostrarAlerta(){
-    this.Alerta = true
-  }
-  noMostrarAlerta(){
-    this.Alerta = true
+  noMostrar(){
+    this.MostrarPortfolio = false
   }
 
   ngOnInit() {

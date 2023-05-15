@@ -33,25 +33,18 @@ export class IniciarSesionComponent implements OnInit{
     this.authServ.IniciarSesion(this.form.value).subscribe(response => {
         console.log("RESPONSE:" + JSON.stringify(response));
         if (response.status < 200 || response.status >= 300) {
-          this.mostrarAlerta();
-        }
-       }
-      )
-    this.authServ.Registrarse(this.form.value).subscribe(response => {
-        console.log("RESPONSE:" + JSON.stringify(response));
-        if (response.status < 200 || response.status >= 300) {
-          this.mostrarAlerta();
+          this.mostrar();
         }
        }
       )
   }
     
-  Alerta: boolean = false;
-  mostrarAlerta(){
-    this.Alerta = true
+  MostrarPortfolio: boolean = false;
+  mostrar(){
+    this.MostrarPortfolio = true
   }
-  noMostrarAlerta(){
-    this.Alerta = false
+  noMostrar(){
+    this.MostrarPortfolio = false
   }
  
   ngOnInit() {

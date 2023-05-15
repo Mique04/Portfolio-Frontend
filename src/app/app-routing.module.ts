@@ -4,10 +4,9 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { LoginComponent } from './Components/login/login.component';
 import { IniciarSesionComponent } from './Components/iniciar-sesion/iniciar-sesion.component';
 import { RegistrarseComponent } from './Components/registrarse/registrarse.component';
-import { GuardGuard } from './Service/Guards/guard.guard';
 
 const routes: Routes = [
-  {path:'portfolio', component: PortfolioComponent, canActivate:[GuardGuard]},
+  {path:'portfolio', component: PortfolioComponent},
   {path:'login', component: LoginComponent},
   {path:'iniciarSesion', component: IniciarSesionComponent},
   {path:'registrarse', component: RegistrarseComponent},
