@@ -10,6 +10,9 @@ import { HttpResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
+
+  UsuarioActivo: boolean = false;
+
   private API_URL = "https://portfolio-backend-v22r.onrender.com";
   currentUserSubjet: BehaviorSubject<any>;
   constructor(private Http:HttpClient, private ruta: Router) {
@@ -18,11 +21,11 @@ export class AuthService {
   }
 
   Registrarse(credenciales: any): Observable<any> {
+    console.log("se llamó al metodo Registrarse, de auth.service");
     return this.Http.post(`${this.API_URL}/new/persona`, credenciales, { observe: 'response' }).pipe(
       map((response: HttpResponse<any>) => {
         if (response.status >= 200 && response.status < 300) {
           sessionStorage.setItem('currentUser', JSON.stringify(response.body));
-          this.ruta.navigate(['/portfolio']);
           this.UsuarioActivo = true;
           console.log("Metodo Registrarse realizado con exito");
           return true;
@@ -36,11 +39,11 @@ export class AuthService {
   }
 
 IniciarSesion(credenciales: any): Observable<any> {
+  console.log("se llamó al metodo IniciarSesion, de auth.service");
   return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' }).pipe(
     map((response: HttpResponse<any>) => {
       if (response.status >= 200 && response.status < 300) {
         sessionStorage.setItem('currentUser', JSON.stringify(response.body));
-        this.ruta.navigate(['/portfolio']);
         this.UsuarioActivo = true;
         console.log("Metodo IniciarSesion realizado con exito");
         return true
@@ -52,7 +55,5 @@ IniciarSesion(credenciales: any): Observable<any> {
     })
   );
 }
-
-UsuarioActivo: boolean = false;
 
 }

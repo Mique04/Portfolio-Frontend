@@ -1,21 +1,27 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../Authentication/auth.service';
-import { IniciarSesionComponent } from 'src/app/Components/iniciar-sesion/iniciar-sesion.component';
-import { RegistrarseComponent } from 'src/app/Components/registrarse/registrarse.component';
+import { AuthService } from '../Service/Authentication/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GuardGuard implements CanActivate {
 
-  constructor (private iniciarSesion: IniciarSesionComponent, private registrarse: RegistrarseComponent, private rutas: Router){}
+  constructor (private rutas: Router, private auth: AuthService){}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-    return true;
+      if(this.auth.UsuarioActivo){
+        this.rutas.navigate(['/portfolio']);
+        console.log("el guard funciona y está permitiendo el paso");
+        return true;
+      }
+      else {
+        console.log("el guard no funciona o no se autenticó correctamente");
+        return false;
+      }
+  }
   
-}
 }

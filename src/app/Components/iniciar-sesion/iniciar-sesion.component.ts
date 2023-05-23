@@ -29,22 +29,18 @@ export class IniciarSesionComponent implements OnInit{
   }
 
   onEnviar(event: Event){
+    console.log("Se llamó al metodo onEnviar de registrar.component");
     event.preventDefault();
     this.authServ.IniciarSesion(this.form.value).subscribe(response => {
         console.log("RESPONSE:" + JSON.stringify(response));
         if (response.status < 200 || response.status >= 300) {
-          this.mostrar();
+          console.log("El metodo onEnviar de iniciar-Sesion.component funciona correctamente");
+        }
+        else {
+          console.log("El metodo onEnviar de iniciar-Sesion.component no funciona o hubo un problema en el servicio");
         }
        }
       )
-  }
-    
-  MostrarPortfolio: boolean = false;
-  mostrar(){
-    this.MostrarPortfolio = true
-  }
-  noMostrar(){
-    this.MostrarPortfolio = false
   }
  
   ngOnInit() {
