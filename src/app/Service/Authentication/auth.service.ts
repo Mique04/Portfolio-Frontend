@@ -24,9 +24,11 @@ export class AuthService {
           sessionStorage.setItem('currentUser', JSON.stringify(response.body));
           this.ruta.navigate(['/portfolio']);
           this.UsuarioActivo = true;
+          console.log("Metodo Registrarse realizado con exito");
           return true;
         }
         else {
+          console.log("Metodo Registrarse ha fallado");
           return false;
         }
       })
@@ -38,10 +40,13 @@ IniciarSesion(credenciales: any): Observable<any> {
     map((response: HttpResponse<any>) => {
       if (response.status >= 200 && response.status < 300) {
         sessionStorage.setItem('currentUser', JSON.stringify(response.body));
+        this.ruta.navigate(['/portfolio']);
         this.UsuarioActivo = true;
+        console.log("Metodo IniciarSesion realizado con exito");
         return true
       }
       else {
+        console.log("Metodo IniciarSesion ha fallado");
         return false;
       }
     })
