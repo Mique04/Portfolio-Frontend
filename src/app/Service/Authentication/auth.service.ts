@@ -22,33 +22,37 @@ export class AuthService {
 
   Registrarse(credenciales: any): Observable<any> {
     console.log("se llamó al metodo Registrarse, de auth.service");
-    return this.Http.post(`${this.API_URL}/new/persona`, credenciales, { observe: 'response' }).pipe(
+     return this.Http.post(`${this.API_URL}/new/persona`, credenciales, { observe: 'response' }).pipe(
       map((response: HttpResponse<any>) => {
-        if (response.status >= 200 && response.status < 300) {
+        if (response.body == 'Usuario registrado exitosamente') {
           sessionStorage.setItem('currentUser', JSON.stringify(response.body));
           this.UsuarioActivo = true;
+          console.log("Respuesta del servidor:", response.body);
           console.log("Metodo Registrarse realizado con exito");
           return true;
         }
         else {
+          console.log("Respuesta del servidor:", response.body);
           console.log("Metodo Registrarse ha fallado");
           return false;
         }
       })
-    );
+    ); 
   }
 
 IniciarSesion(credenciales: any): Observable<any> {
   console.log("se llamó al metodo IniciarSesion, de auth.service");
   return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' }).pipe(
     map((response: HttpResponse<any>) => {
-      if (response.status >= 200 && response.status < 300) {
+      if (response.body == 'Usuario registrado exitosamente') {
         sessionStorage.setItem('currentUser', JSON.stringify(response.body));
         this.UsuarioActivo = true;
+        console.log("Respuesta del servidor:", response.body);
         console.log("Metodo IniciarSesion realizado con exito");
         return true
       }
       else {
+        console.log("Respuesta del servidor:", response.body);
         console.log("Metodo IniciarSesion ha fallado");
         return false;
       }
