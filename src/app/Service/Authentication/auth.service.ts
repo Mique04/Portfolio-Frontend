@@ -37,8 +37,8 @@ export class AuthService {
           return false;
         }
       })
-    ); 
-  }
+    )
+  };
 
 IniciarSesion(credenciales: any): Observable<any> {
   console.log("se llamó al metodo IniciarSesion, de auth.service");
