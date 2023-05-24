@@ -44,7 +44,7 @@ IniciarSesion(credenciales: any): Observable<any> {
   console.log("se llamó al metodo IniciarSesion, de auth.service");
   return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' }).pipe(
     map((response: HttpResponse<any>) => {
-      if (response.body == 'Usuario registrado exitosamente') {
+      if (response.body == 'Has iniciado sesion exitosamente') {
         sessionStorage.setItem('currentUser', JSON.stringify(response.body));
         this.UsuarioActivo = true;
         console.log("Respuesta del servidor:", response.body);

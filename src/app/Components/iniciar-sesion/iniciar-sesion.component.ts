@@ -29,11 +29,11 @@ export class IniciarSesionComponent implements OnInit{
   }
 
   onEnviar(event: Event){
-    console.log("Se llamó al metodo onEnviar de registrar.component");
+    console.log("Se llamó al metodo onEnviar de iniciar-sesion.component");
     event.preventDefault();
     this.authServ.IniciarSesion(this.form.value).subscribe(response => {
         console.log("RESPONSE:" + JSON.stringify(response));
-        if (response.status < 200 || response.status >= 300) {
+        if (response.body == 'Has iniciado sesion exitosamente') {
           console.log("El metodo onEnviar de iniciar-Sesion.component funciona correctamente");
         }
         else {

@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Service/Authentication/auth.service';
 import { Subscription } from 'rxjs';
 import { ResizeService } from 'src/app/Service/Resize/resize.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrarse',
@@ -16,12 +15,12 @@ export class RegistrarseComponent implements OnInit {
   public resizeSubscription: Subscription = new Subscription();
 
   form: FormGroup;
-  constructor(public formBuilder: FormBuilder, public authServ: AuthService, public injector: Injector, public resizeService: ResizeService, private rutas: Router){
+  constructor(public formBuilder: FormBuilder, public authServ: AuthService, public injector: Injector, public resizeService: ResizeService){
     this.form=this.formBuilder.group({
       Nombre:['', [Validators.required]],
       Apellido:['', [Validators.required]],
       Email:['', [Validators.required, Validators.email]],
-      Contraseña:['', [Validators.required, Validators.minLength(8)]]
+      Password:['', [Validators.required, Validators.minLength(8)]]
 
     })
   }
@@ -44,7 +43,8 @@ export class RegistrarseComponent implements OnInit {
     event.preventDefault();
     this.authServ.Registrarse(this.form.value).subscribe(response => {
         console.log("RESPONSE:" + JSON.stringify(response));
-        if (response.status < 200 || response.status >= 300) {
+        console.log(response.body);
+        if (response.body == 'Usuario registrado exitosamente') {
           console.log("El metodo onEnviar de registrarse.component funciona correctamente");
         }
         else {
