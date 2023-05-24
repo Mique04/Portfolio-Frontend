@@ -41,7 +41,7 @@ export class RegistrarseComponent implements OnInit {
   onEnviar(event: Event){
     console.log("Se llamó al metodo onEnviar de registrar.component");
     event.preventDefault();
-    this.authServ.Registrarse(this.form.value).subscribe(response => {
+    return this.authServ.Registrarse(this.form.value).subscribe(response => {
         console.log("RESPONSE:" + JSON.stringify(response));
         console.log(response.body);
         if (response.body == 'Usuario registrado exitosamente') {

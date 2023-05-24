@@ -31,8 +31,9 @@ export class IniciarSesionComponent implements OnInit{
   onEnviar(event: Event){
     console.log("Se llamó al metodo onEnviar de iniciar-sesion.component");
     event.preventDefault();
-    this.authServ.IniciarSesion(this.form.value).subscribe(response => {
+    return this.authServ.IniciarSesion(this.form.value).subscribe(response => {
         console.log("RESPONSE:" + JSON.stringify(response));
+        console.log(response.body);
         if (response.body == 'Has iniciado sesion exitosamente') {
           console.log("El metodo onEnviar de iniciar-Sesion.component funciona correctamente");
         }
