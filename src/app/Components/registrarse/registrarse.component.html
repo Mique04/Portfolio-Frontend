@@ -8,8 +8,7 @@
       <div class="d-flex justify-content-around">
         <div class="my-3">
             <label for="exampleInputEmail1" class="form-label">Nombre</label>
-            <input type="text" class="form-control" formControlName='Nombre'
-            [ngClass]="{'is-invalid': Nombre?.touched, 'is-valid': Nombre?.touched}">
+            <input type="text" class="form-control" formControlName='Nombre' [ngClass]="{'is-invalid': Nombre?.errors && Nombre?.touched, 'is-valid': !Nombre?.errors && Nombre?.touched}">
             <div *ngIf='Nombre?.errors && Nombre?.touched'>
               <p *ngIf="Nombre?.hasError('required')" class="text-danger">
                 El nombre es requerido
@@ -19,8 +18,7 @@
 
         <div class="my-3">
             <label for="exampleInputEmail1" class="form-label">Apellido</label>
-            <input type="text" class="form-control" formControlName='Apellido'
-            [ngClass]="{'is-invalid': Apellido?.touched, 'is-valid': Apellido?.touched}">
+            <input type="text" class="form-control" formControlName='Apellido' [ngClass]="{'is-invalid': Apellido?.errors && Apellido?.touched, 'is-valid': !Apellido?.errors && Apellido?.touched}">
             <div *ngIf='Apellido?.errors && Apellido?.touched'>
               <p *ngIf="Apellido?.hasError('required')" class="text-danger">
                 El apellido es requerido
