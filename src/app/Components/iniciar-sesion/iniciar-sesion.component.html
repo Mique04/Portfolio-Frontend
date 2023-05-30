@@ -4,7 +4,7 @@
       <button routerLink="/login" type="button" class="color2 p-2 m-1 mx-3 trans-color" id="volver">Volver</button>
       <h1 class="text-big text-center color1 px-4 py-1">Iniciar Sesión</h1>
       
-        <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+        <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="my-3">
           <div class="mb-3 p-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName='email'

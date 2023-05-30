@@ -19,7 +19,7 @@ export class RegistrarseComponent implements OnInit {
       nombre:['', [Validators.required]],
       apellido:['', [Validators.required]],
       email:['', [Validators.required, Validators.email]],
-      password:['', [Validators.required, Validators.minLength(8)]]
+      contraseña:['', [Validators.required, Validators.minLength(8)]]
     })
   }
 
@@ -33,7 +33,7 @@ export class RegistrarseComponent implements OnInit {
     return this.form.get('email');
   }
   get password(){
-    return this.form.get('password');
+    return this.form.get('contraseña');
   } 
 
   onEnviar(event: Event) {
@@ -41,7 +41,7 @@ export class RegistrarseComponent implements OnInit {
     event.preventDefault();
     this.authServ.Registrarse(this.form.value).pipe(
       switchMap((response: HttpResponse<any>) => {
-        if (response.status == 200) {
+        if (response.status >= 200 && response.status < 300) {
         this.authServ.UsuarioActivo = true;
         console.log("El metodo onEnviar de Registrarse.component funciona correctamente");
         console.log("Usuario activo: " + this.authServ.UsuarioActivo);

@@ -1,6 +1,7 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription, map } from 'rxjs';
+import { Subscription, map, of, switchMap } from 'rxjs';
 import { AuthService } from 'src/app/Service/Authentication/auth.service';
 import { ResizeService } from 'src/app/Service/Resize/resize.service';
 
@@ -16,7 +17,7 @@ export class IniciarSesionComponent implements OnInit{
   constructor(public formBuilder: FormBuilder, public authServ:AuthService, public injector: Injector, public resizeService: ResizeService){
     this.form=this.formBuilder.group({
       email:['', [Validators.required, Validators.email]],
-      password:['', [Validators.required, Validators.minLength(8)]]
+      contraseña:['', [Validators.required, Validators.minLength(8)]]
     })
   }
 
@@ -25,26 +26,32 @@ export class IniciarSesionComponent implements OnInit{
   }
   
   get password(){
-    return this.form.get('password');
+    return this.form.get('contraseña');
   }
 
   onEnviar(event: Event) {
-    console.log("Se llamó al metodo onEnviar de iniciar-sesion.component");
+    console.log("Se llamó al metodo onEnviar de IniciarSesion.component");
     event.preventDefault();
     this.authServ.IniciarSesion(this.form.value).pipe(
-      map((response) => {
+      switchMap((response: HttpResponse<any>) => {
+        if (response.status >= 200 && response.status < 300) {
         this.authServ.UsuarioActivo = true;
-        console.log("El metodo onEnviar de iniciar-Sesion.component funciona correctamente");
+        console.log("El metodo onEnviar de IniciarSesion.component funciona correctamente");
         console.log("Usuario activo: " + this.authServ.UsuarioActivo);
-        // Lógica adicional después de recibir la respuesta exitosa
-        return response; // Puedes devolver el valor original o transformado si es necesario
-      })
-    ).subscribe((response) => {
+        console.log("response.body: " + response.body);
+        console.log("response.status: " +response.status);
+        return of(response.body);
+      } else {
+      throw new Error('Error en la respuesta');}})
+    ).subscribe(
+      (data) => {
       // Aquí puedes trabajar con el valor emitido después de aplicar el map
-      console.log("Respuesta de la petición IniciarSesion:", response);
+      this.authServ.UsuarioActivo = true;
+      console.log("Respuesta de la petición IniciarSesion exitosa:", data);
     }, (error) => {
       this.authServ.UsuarioActivo = false;
-      console.log("El metodo onEnviar de iniciar-Sesion.component no funciona o hubo un problema en el servicio");
+      console.log("El metodo onEnviar de IniciarSesion.component no funciona o hubo un problema en el servicio");
+      console.log('Error en la respuesta:', error);
       console.log("Usuario activo: " + this.authServ.UsuarioActivo);
       // Lógica adicional para manejar el error
       return error;
