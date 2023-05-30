@@ -7,13 +7,13 @@
         <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
           <div class="mb-3 p-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName='Email'
-            [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}">
-            <div *ngIf='Email?.errors && Email?.touched'>
-              <p *ngIf="Email?.hasError('required')" class="text-danger">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName='email'
+            [ngClass]="{'is-invalid': email?.errors && email?.touched, 'is-valid': !email?.errors && email?.touched}">
+            <div *ngIf='email?.errors && email?.touched'>
+              <p *ngIf="email?.hasError('required')" class="text-danger">
                 El email es requerido
               </p>
-              <p *ngIf="Email?.hasError('email')" class="text-danger">
+              <p *ngIf="email?.hasError('email')" class="text-danger">
                 El formato del email debe ser valido
               </p>
             </div>
@@ -21,20 +21,20 @@
       
           <div class="mb-3 p-3">
             <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" formControlName='Password'
-            [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}">
-            <div *ngIf='Password?.errors && Password?.touched'>
-              <p *ngIf="Password?.hasError('required')" class="text-danger">
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName='password'
+            [ngClass]="{'is-invalid': password?.errors && password?.touched, 'is-valid': !password?.errors && password?.touched}">
+            <div *ngIf='password?.errors && password?.touched'>
+              <p *ngIf="password?.hasError('required')" class="text-danger">
                 La contraseña es requerida
               </p>
-              <p *ngIf="Password?.hasError?.length" class="text-danger">
+              <p *ngIf="password?.hasError?.length" class="text-danger">
                 La contraseña debe ser de 8 o más caracteres
               </p> 
             </div>
           </div>
           <button type="submit" class="color2 p-3 m-1 mx-3 trans-color" (click)="onEnviar($event)" routerLink="/portfolio">Iniciar Sesión</button>
         </form> 
-        <span *ngIf="this.authServ.alerta" class="bg-2 color1 px-5 py-3 rounded-2 text-center text-big">Inténtelo de nuevo</span>
+        <span *ngIf="this.authServ.alerta" class="bg-2 color1 mx-4 m-1 my-3 px-5 py-3 rounded-2 text-center text-big">Inténtelo de nuevo</span>
   </div>
   
 </section>

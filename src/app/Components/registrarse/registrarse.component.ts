@@ -15,24 +15,24 @@ export class RegistrarseComponent implements OnInit {
   form: FormGroup;
   constructor(public formBuilder: FormBuilder, public authServ:AuthService, public injector: Injector, public resizeService: ResizeService){
     this.form=this.formBuilder.group({
-      Nombre:['', [Validators.required]],
-      Apellido:['', [Validators.required]],
-      Email:['', [Validators.required, Validators.email]],
-      Password:['', [Validators.required, Validators.minLength(8)]]
+      nombre:['', [Validators.required]],
+      apellido:['', [Validators.required]],
+      email:['', [Validators.required, Validators.email]],
+      password:['', [Validators.required, Validators.minLength(8)]]
     })
   }
 
-  get Nombre(){
-    return this.form.get('Nombre');
+  get nombre(){
+    return this.form.get('nombre');
   }
-  get Apellido(){
-    return this.form.get('Apellido');
+  get apellido(){
+    return this.form.get('apellido');
   }
-  get Email(){
-    return this.form.get('Email');
+  get email(){
+    return this.form.get('email');
   }
-  get Password(){
-    return this.form.get('Password');
+  get password(){
+    return this.form.get('password');
   } 
 
   onEnviar(event: Event) {
