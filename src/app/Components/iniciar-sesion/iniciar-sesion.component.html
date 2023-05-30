@@ -21,7 +21,7 @@
       
           <div class="mb-3 p-3">
             <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" formControlName='password'
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName='contraseña'
             [ngClass]="{'is-invalid': password?.errors && password?.touched, 'is-valid': !password?.errors && password?.touched}">
             <div *ngIf='password?.errors && password?.touched'>
               <p *ngIf="password?.hasError('required')" class="text-danger">

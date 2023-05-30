@@ -1,8 +1,9 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Service/Authentication/auth.service';
-import { Subscription, map } from 'rxjs';
+import { Subscription, of, switchMap } from 'rxjs';
 import { ResizeService } from 'src/app/Service/Resize/resize.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-registrarse',
@@ -39,29 +40,36 @@ export class RegistrarseComponent implements OnInit {
     console.log("Se llamó al metodo onEnviar de Registrarse.component");
     event.preventDefault();
     this.authServ.Registrarse(this.form.value).pipe(
-      map((response) => {
+      switchMap((response: HttpResponse<any>) => {
+        if (response.status == 200) {
         this.authServ.UsuarioActivo = true;
         console.log("El metodo onEnviar de Registrarse.component funciona correctamente");
         console.log("Usuario activo: " + this.authServ.UsuarioActivo);
-        // Lógica adicional después de recibir la respuesta exitosa
-        return response; // Puedes devolver el valor original o transformado si es necesario
-      })
-    ).subscribe((response) => {
+        console.log("response.body: " + response.body);
+        console.log("response.status: " +response.status);
+        return of(response.body);
+      } else {
+      throw new Error('Error en la respuesta');}})
+    ).subscribe(
+      (data) => {
       // Aquí puedes trabajar con el valor emitido después de aplicar el map
-      console.log("Respuesta de la petición Registrarse:", response);
+      this.authServ.UsuarioActivo = true;
+      console.log("Respuesta de la petición Registrarse exitosa:", data);
     }, (error) => {
       this.authServ.UsuarioActivo = false;
       console.log("El metodo onEnviar de Registrarse.component no funciona o hubo un problema en el servicio");
+      console.log('Error en la respuesta:', error);
       console.log("Usuario activo: " + this.authServ.UsuarioActivo);
       // Lógica adicional para manejar el error
       return error;
     });
   }
 
+
   ngOnInit() {
     this.resizeService.windowWidth$.subscribe(width => {
       console.log('El ancho de la ventana es:', width);
       this.screenWidth = width;
     });
-  }
+  } 
 } 
