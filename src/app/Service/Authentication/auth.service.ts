@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { BehaviorSubject, Observable, observable } from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 
@@ -23,7 +23,7 @@ export class AuthService {
   Registrarse(credenciales: any): Observable<any> {
     console.log("se llamó al metodo Registrarse, de auth.service");
      return this.Http.post(`${this.API_URL}/new/persona`, credenciales, { observe: 'response' }).pipe(
-      tap((response: HttpResponse<any>) => {
+      map((response: HttpResponse<any>) => {
         console.log("Estado de la respuesta de la petición registrarse:", response.status);
         console.log("Cuerpo de la respuesta de la petición registrarse:", response.body);
       })
@@ -33,7 +33,7 @@ export class AuthService {
   IniciarSesion(credenciales: any): Observable<any> {
     console.log("se llamó al metodo IniciarSesion, de auth.service");
     return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' }).pipe(
-      tap((response: HttpResponse<any>) => {
+      map((response: HttpResponse<any>) => {
         console.log("Estado de la respuesta de la petición IniciarSesion:", response.status);
         console.log("Cuerpo de la respuesta de la petición IniciarSesion:", response.body);
       })
