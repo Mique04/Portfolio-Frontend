@@ -1,7 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Service/Authentication/auth.service';
-import { Subscription } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { ResizeService } from 'src/app/Service/Resize/resize.service';
 
 @Component({
@@ -35,20 +35,27 @@ export class RegistrarseComponent implements OnInit {
     return this.form.get('Password');
   } 
 
-  onEnviar(event: Event){
-    console.log("Se llamó al metodo onEnviar de registrar.component");
+  onEnviar(event: Event) {
+    console.log("Se llamó al metodo onEnviar de iniciar-sesion.component");
     event.preventDefault();
-    const registrarse = this.authServ.Registrarse(this.form.value);
-    if (registrarse) {
-      this.authServ.UsuarioActivo = true;
-      console.log("El metodo onEnviar de registrarse.component funciona correctamente");
-      console.log("Usuario activo: " + this.authServ.UsuarioActivo);
-    }
-  else {
+    this.authServ.IniciarSesion(this.form.value).pipe(
+      map((response) => {
+        this.authServ.UsuarioActivo = true;
+        console.log("El metodo onEnviar de iniciar-Sesion.component funciona correctamente");
+        console.log("Usuario activo: " + this.authServ.UsuarioActivo);
+        // Lógica adicional después de recibir la respuesta exitosa
+        return response; // Puedes devolver el valor original o transformado si es necesario
+      })
+    ).subscribe((response) => {
+      // Aquí puedes trabajar con el valor emitido después de aplicar el map
+      console.log("Respuesta de la petición IniciarSesion:", response);
+    }, (error) => {
       this.authServ.UsuarioActivo = false;
-      console.log("El metodo onEnviar de registrarse.component no funciona o hubo un problema en el servicio");
+      console.log("El metodo onEnviar de iniciar-Sesion.component no funciona o hubo un problema en el servicio");
       console.log("Usuario activo: " + this.authServ.UsuarioActivo);
-    }
+      // Lógica adicional para manejar el error
+      return error;
+    });
   }
 
   ngOnInit() {
