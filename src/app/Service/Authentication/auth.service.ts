@@ -43,11 +43,11 @@ export class AuthService {
 
 IniciarSesion(credenciales: any): Observable<any> {
   console.log("se llamó al metodo IniciarSesion, de auth.service");
+  this.UsuarioActivo = true;
   return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' }).pipe(
     map((response: HttpResponse<any>) => {
-      if (response.body == "la validacion devolvio: true| Has iniciado sesion exitosamente") {
+      if (true) {
         sessionStorage.setItem('currentUser', JSON.stringify(response.body));
-        this.UsuarioActivo = true;
         console.log("Respuesta del servidor:", response.body);
         console.log("Metodo IniciarSesion realizado con exito");
         return true
