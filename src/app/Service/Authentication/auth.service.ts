@@ -23,8 +23,9 @@ export class AuthService {
   Registrarse(credenciales: any): Observable<any> {
     console.log("se llamó al metodo Registrarse, de auth.service");
      return this.Http.post(`${this.API_URL}/new/persona`, credenciales, { observe: 'response' }).pipe(
-      tap(response => {
-        console.log("Respuesta de la petición Registrarse:", response);
+      tap((response: HttpResponse<any>) => {
+        console.log("Estado de la respuesta de la petición registrarse:", response.status);
+        console.log("Cuerpo de la respuesta de la petición registrarse:", response.body);
       })
     );
   };
@@ -32,8 +33,9 @@ export class AuthService {
   IniciarSesion(credenciales: any): Observable<any> {
     console.log("se llamó al metodo IniciarSesion, de auth.service");
     return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' }).pipe(
-      tap(response => {
-        console.log("Respuesta de la petición IniciarSesion:", response);
+      tap((response: HttpResponse<any>) => {
+        console.log("Estado de la respuesta de la petición IniciarSesion:", response.status);
+        console.log("Cuerpo de la respuesta de la petición IniciarSesion:", response.body);
       })
     );
   }

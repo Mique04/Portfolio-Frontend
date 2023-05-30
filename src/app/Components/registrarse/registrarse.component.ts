@@ -45,10 +45,12 @@ export class RegistrarseComponent implements OnInit {
     if (registrarse) {
       this.authServ.UsuarioActivo = true;
       console.log("El metodo onEnviar de registrarse.component funciona correctamente");
+      console.log("Usuario activo: " + this.authServ.UsuarioActivo);
     }
   else {
       this.authServ.UsuarioActivo = false;
       console.log("El metodo onEnviar de registrarse.component no funciona o hubo un problema en el servicio");
+      console.log("Usuario activo: " + this.authServ.UsuarioActivo);
     }
   }
 

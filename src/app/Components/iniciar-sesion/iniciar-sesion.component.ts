@@ -35,10 +35,12 @@ export class IniciarSesionComponent implements OnInit{
     if (iniciarSesion) {
         this.authServ.UsuarioActivo = true;
         console.log("El metodo onEnviar de iniciar-Sesion.component funciona correctamente");
+        console.log("Usuario activo: " + this.authServ.UsuarioActivo);
       }
     else {
         this.authServ.UsuarioActivo = false;
         console.log("El metodo onEnviar de iniciar-Sesion.component no funciona o hubo un problema en el servicio");
+        console.log("Usuario activo: " + this.authServ.UsuarioActivo);
       }
   }
 
