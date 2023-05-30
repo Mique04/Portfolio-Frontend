@@ -34,12 +34,12 @@ export class IniciarSesionComponent implements OnInit{
     event.preventDefault();
     this.authServ.IniciarSesion(this.form.value).pipe(
       switchMap((response: HttpResponse<any>) => {
-        if (response.status >= 200 && response.status < 300) {
+        if (this.authServ.validado >= 200 && this.authServ.validado < 300) {
         this.authServ.UsuarioActivo = true;
         console.log("El metodo onEnviar de IniciarSesion.component funciona correctamente");
         console.log("Usuario activo: " + this.authServ.UsuarioActivo);
         console.log("response.body: " + response.body);
-        console.log("response.status: " +response.status);
+        console.log("response.status: " + response.status);
         return of(response.body);
       } else {
       throw new Error('Error en la respuesta');}})
@@ -47,11 +47,11 @@ export class IniciarSesionComponent implements OnInit{
       (data) => {
       // Aquí puedes trabajar con el valor emitido después de aplicar el map
       this.authServ.UsuarioActivo = true;
-      console.log("Respuesta de la petición IniciarSesion exitosa:", data);
+      console.log("Respuesta de la petición IniciarSesion exitosa:" + data);
     }, (error) => {
       this.authServ.UsuarioActivo = false;
       console.log("El metodo onEnviar de IniciarSesion.component no funciona o hubo un problema en el servicio");
-      console.log('Error en la respuesta:', error);
+      console.log('Error en la respuesta:' + error);
       console.log("Usuario activo: " + this.authServ.UsuarioActivo);
       // Lógica adicional para manejar el error
       return error;

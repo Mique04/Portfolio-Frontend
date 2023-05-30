@@ -13,6 +13,8 @@ export class AuthService {
 
   UsuarioActivo: boolean = false;
   alerta: Boolean = false;
+  creado: number = 0;
+  validado: number = 0;
 
   private API_URL = "https://portfolio-backend-v22r.onrender.com";
   currentUserSubjet: BehaviorSubject<any>;
@@ -25,9 +27,10 @@ export class AuthService {
     console.log("se llamó al metodo Registrarse, de auth.service");
      return this.Http.post(`${this.API_URL}/new/persona`, credenciales, { observe: 'response' }).pipe(
       map((response: HttpResponse<any>) => {
-        console.log("Estado de la respuesta de la petición registrarse:", response.status);
-        console.log("Cuerpo de la respuesta de la petición registrarse:", response.body);
-        return response;
+        console.log("Estado de la respuesta de la petición registrarse:" + response.status);
+        console.log("Cuerpo de la respuesta de la petición registrarse:" + response.body);
+        this.creado = response.status;
+        return this.creado;
       })
     );
   };
@@ -36,9 +39,10 @@ export class AuthService {
     console.log("se llamó al metodo IniciarSesion, de auth.service");
     return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' }).pipe(
       map((response: HttpResponse<any>) => {
-        console.log("Estado de la respuesta de la petición IniciarSesion:", response.status);
-        console.log("Cuerpo de la respuesta de la petición IniciarSesion:", response.body);
-        return response;
+        console.log("Estado de la respuesta de la petición IniciarSesion:" + response.status);
+        console.log("Cuerpo de la respuesta de la petición IniciarSesion:" + response.body);
+        this.validado = response.status;
+        return this.validado;
       })
     );
   }
