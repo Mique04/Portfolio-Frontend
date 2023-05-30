@@ -26,6 +26,7 @@ export class AuthService {
       map((response: HttpResponse<any>) => {
         console.log("Estado de la respuesta de la petición registrarse:", response.status);
         console.log("Cuerpo de la respuesta de la petición registrarse:", response.body);
+        return response;
       })
     );
   };
@@ -36,6 +37,7 @@ export class AuthService {
       map((response: HttpResponse<any>) => {
         console.log("Estado de la respuesta de la petición IniciarSesion:", response.status);
         console.log("Cuerpo de la respuesta de la petición IniciarSesion:", response.body);
+        return response;
       })
     );
   }
