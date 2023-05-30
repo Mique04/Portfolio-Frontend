@@ -14,12 +14,10 @@ export class GuardGuard implements CanActivate {
     _route: ActivatedRouteSnapshot,
     _state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(this.auth.UsuarioActivo){
-        this.rutas.navigate(['/portfolio']);
-        console.log("el guard funciona y está permitiendo el paso");
         return true;
       }
       else {
-        console.log("el guard no funciona o no se autenticó correctamente");
+        this.rutas.navigate(['/login']);
         return false;
       }
   }
