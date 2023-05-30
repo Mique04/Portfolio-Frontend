@@ -10,18 +10,15 @@ import { ResizeService } from 'src/app/Service/Resize/resize.service';
   styleUrls: ['./registrarse.component.css']
 })
 export class RegistrarseComponent implements OnInit {
-
   screenWidth = 0;
   public resizeSubscription: Subscription = new Subscription();
-
   form: FormGroup;
-  constructor(public formBuilder: FormBuilder, public authServ: AuthService, public injector: Injector, public resizeService: ResizeService){
+  constructor(public formBuilder: FormBuilder, public authServ:AuthService, public injector: Injector, public resizeService: ResizeService){
     this.form=this.formBuilder.group({
       Nombre:['', [Validators.required]],
       Apellido:['', [Validators.required]],
       Email:['', [Validators.required, Validators.email]],
       Password:['', [Validators.required, Validators.minLength(8)]]
-
     })
   }
 
