@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { BehaviorSubject, Observable, observable } from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 
@@ -22,28 +22,19 @@ export class AuthService {
 
   Registrarse(credenciales: any): Observable<any> {
     console.log("se llamó al metodo Registrarse, de auth.service");
-    this.UsuarioActivo = true;
      return this.Http.post(`${this.API_URL}/new/persona`, credenciales, { observe: 'response' }).pipe(
-      map((response: HttpResponse<any>) => {
-        if (response.body == "existeUsuario devolvio: false| Usuario registrado exitosamente") {
-          sessionStorage.setItem('currentUser', JSON.stringify(response.body));
-          console.log("Respuesta del servidor:" + response.body);
-          console.log("Metodo Registrarse realizado con exito");
-          return true;
-        }
-        else {
-          this.UsuarioActivo = false;
-          console.log("Respuesta del servidor:" + response.body);
-          console.log("Metodo Registrarse ha fallado");
-          return false;
-        }
+      tap(response => {
+        console.log("Respuesta de la petición Registrarse:", response);
       })
-    )
+    );
   };
 
-IniciarSesion(credenciales: any): Observable<any> {
-  console.log("se llamó al metodo IniciarSesion, de auth.service");
-  this.UsuarioActivo = true;
-  return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' });
+  IniciarSesion(credenciales: any): Observable<any> {
+    console.log("se llamó al metodo IniciarSesion, de auth.service");
+    return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' }).pipe(
+      tap(response => {
+        console.log("Respuesta de la petición IniciarSesion:", response);
+      })
+    );
   }
 }

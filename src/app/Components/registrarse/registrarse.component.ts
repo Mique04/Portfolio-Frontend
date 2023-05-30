@@ -41,17 +41,15 @@ export class RegistrarseComponent implements OnInit {
   onEnviar(event: Event){
     console.log("Se llamó al metodo onEnviar de registrar.component");
     event.preventDefault();
-    return this.authServ.Registrarse(this.form.value).subscribe(response => {
-        console.log("RESPONSE:" + JSON.stringify(response));
-        console.log(response.body);
-        if (response.body == 'Usuario registrado exitosamente') {
-          console.log("El metodo onEnviar de registrarse.component funciona correctamente");
-        }
-        else {
-          console.log("El metodo onEnviar de registrarse.component no funciona o hubo un problema en el servicio");
-        }
-       }
-      )
+    const registrarse = this.authServ.Registrarse(this.form.value);
+    if (registrarse) {
+      this.authServ.UsuarioActivo = true;
+      console.log("El metodo onEnviar de registrarse.component funciona correctamente");
+    }
+  else {
+      this.authServ.UsuarioActivo = false;
+      console.log("El metodo onEnviar de registrarse.component no funciona o hubo un problema en el servicio");
+    }
   }
 
   ngOnInit() {
