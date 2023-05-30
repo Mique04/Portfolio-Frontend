@@ -12,6 +12,7 @@ import { HttpResponse } from '@angular/common/http';
 export class AuthService {
 
   UsuarioActivo: boolean = false;
+  alerta: Boolean = false;
 
   private API_URL = "https://portfolio-backend-v22r.onrender.com";
   currentUserSubjet: BehaviorSubject<any>;

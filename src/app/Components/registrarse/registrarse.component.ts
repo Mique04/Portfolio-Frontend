@@ -36,22 +36,22 @@ export class RegistrarseComponent implements OnInit {
   } 
 
   onEnviar(event: Event) {
-    console.log("Se llamó al metodo onEnviar de iniciar-sesion.component");
+    console.log("Se llamó al metodo onEnviar de Registrarse.component");
     event.preventDefault();
-    this.authServ.IniciarSesion(this.form.value).pipe(
+    this.authServ.Registrarse(this.form.value).pipe(
       map((response) => {
         this.authServ.UsuarioActivo = true;
-        console.log("El metodo onEnviar de iniciar-Sesion.component funciona correctamente");
+        console.log("El metodo onEnviar de Registrarse.component funciona correctamente");
         console.log("Usuario activo: " + this.authServ.UsuarioActivo);
         // Lógica adicional después de recibir la respuesta exitosa
         return response; // Puedes devolver el valor original o transformado si es necesario
       })
     ).subscribe((response) => {
       // Aquí puedes trabajar con el valor emitido después de aplicar el map
-      console.log("Respuesta de la petición IniciarSesion:", response);
+      console.log("Respuesta de la petición Registrarse:", response);
     }, (error) => {
       this.authServ.UsuarioActivo = false;
-      console.log("El metodo onEnviar de iniciar-Sesion.component no funciona o hubo un problema en el servicio");
+      console.log("El metodo onEnviar de Registrarse.component no funciona o hubo un problema en el servicio");
       console.log("Usuario activo: " + this.authServ.UsuarioActivo);
       // Lógica adicional para manejar el error
       return error;

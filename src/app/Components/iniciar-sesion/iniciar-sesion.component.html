@@ -29,10 +29,12 @@
               </p>
               <p *ngIf="Password?.hasError?.length" class="text-danger">
                 La contraseña debe ser de 8 o más caracteres
-              </p>
+              </p> 
             </div>
           </div>
           <button type="submit" class="color2 p-3 m-1 mx-3 trans-color" (click)="onEnviar($event)" routerLink="/portfolio">Iniciar Sesión</button>
         </form> 
+        <span *ngIf="this.authServ.alerta" class="bg-2 color1 px-5 py-3 rounded-2 text-center text-big">Inténtelo de nuevo</span>
   </div>
+  
 </section>
