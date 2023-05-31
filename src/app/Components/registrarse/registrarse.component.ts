@@ -42,7 +42,6 @@ export class RegistrarseComponent implements OnInit {
     this.authServ.Registrarse(this.form.value).pipe(
       switchMap((response: HttpResponse<any>) => {
         if (this.authServ.creado >= 200 && this.authServ.creado < 300) {
-        this.authServ.UsuarioActivo = true;
         console.log("El metodo onEnviar de Registrarse.component funciona correctamente");
         console.log("Usuario activo: " + this.authServ.UsuarioActivo);
         console.log("response.body: " + response.body);
@@ -53,10 +52,8 @@ export class RegistrarseComponent implements OnInit {
     ).subscribe(
       (data) => {
       // Aquí puedes trabajar con el valor emitido después de aplicar el map
-      this.authServ.UsuarioActivo = true;
       console.log("Respuesta de la petición Registrarse exitosa:" + data);
     }, (error) => {
-      this.authServ.UsuarioActivo = false;
       console.log("El metodo onEnviar de Registrarse.component no funciona o hubo un problema en el servicio");
       console.log('Error en la respuesta:' + error);
       console.log("Usuario activo: " + this.authServ.UsuarioActivo);
