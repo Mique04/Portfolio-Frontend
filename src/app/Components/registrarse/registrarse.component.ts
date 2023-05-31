@@ -1,9 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Service/Authentication/auth.service';
-import { Subscription, of, switchMap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ResizeService } from 'src/app/Service/Resize/resize.service';
-import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-registrarse',
@@ -37,30 +36,16 @@ export class RegistrarseComponent implements OnInit {
   } 
 
   onEnviar(event: Event) {
-    console.log("Se llamó al metodo onEnviar de Registrarse.component");
+    console.log("Se llamó al método onEnviar de Registrarse.component");
     event.preventDefault();
-    this.authServ.Registrarse(this.form.value).pipe(
-      switchMap((response: HttpResponse<any>) => {
-        if (this.authServ.creado >= 200 && this.authServ.creado < 300) {
-        console.log("El metodo onEnviar de Registrarse.component funciona correctamente");
-        console.log("Usuario activo: " + this.authServ.UsuarioActivo);
-        console.log("response.body: " + response.body);
-        console.log("response.status: " + response.status);
-        return of(response.body);
-      } else {
-      throw new Error('Error en la respuesta');}})
-    ).subscribe(
-      (data) => {
-      // Aquí puedes trabajar con el valor emitido después de aplicar el map
-      console.log("Respuesta de la petición Registrarse exitosa:" + data);
-    }, (error) => {
-      console.log("El metodo onEnviar de Registrarse.component no funciona o hubo un problema en el servicio");
-      console.log('Error en la respuesta:' + error);
-      console.log("Usuario activo: " + this.authServ.UsuarioActivo);
-      // Lógica adicional para manejar el error
-      return error;
-    });
+    
+    this.authServ.Registrarse(this.form.value).subscribe(val => {
+      console.log(val);
+    }
+    );
   }
+  
+  
 
 
   ngOnInit() {
@@ -70,3 +55,16 @@ export class RegistrarseComponent implements OnInit {
     });
   } 
 } 
+
+/* (response: HttpResponse<any>) => {
+        console.log("El método onEnviar de Registrarse.component funciona correctamente");
+        console.log("Usuario activo: " + this.authServ.UsuarioActivo);
+        console.log("response.body: " + response.body);
+        console.log("response.status: " + response.status);
+        // Realizar acciones adicionales con la respuesta correcta...
+      },
+      (error) => {
+        console.error("El método onEnviar de Registrarse.component no funciona o hubo un problema en el servicio");
+        console.error('Error en la respuesta:', error);
+        // Realizar acciones adicionales para manejar el error...
+      } */
