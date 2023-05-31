@@ -33,7 +33,12 @@ export class IniciarSesionComponent implements OnInit{
     console.log("Se llamó al metodo onEnviar de IniciarSesion.component");
     event.preventDefault();
     this.authServ.IniciarSesion(this.form.value).subscribe(val => {
-      console.log(val);
+      map((res: HttpResponse<any>) => {
+        console.log("Estado de la respuesta de la petición iniciarSesion: ", res.status);
+        console.log("Usuario activo: " + this.authServ.UsuarioActivo);
+        this.authServ.UsuarioActivo = res.status >= 200 && res.status < 300;
+        console.log(val);
+      })
     }
     );
   }

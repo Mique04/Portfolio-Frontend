@@ -1,8 +1,9 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Service/Authentication/auth.service';
-import { Subscription } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { ResizeService } from 'src/app/Service/Resize/resize.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-registrarse',
@@ -40,7 +41,12 @@ export class RegistrarseComponent implements OnInit {
     event.preventDefault();
     
     this.authServ.Registrarse(this.form.value).subscribe(val => {
-      console.log(val);
+      map((res: HttpResponse<any>) => {
+        console.log("Estado de la respuesta de la petición Registrarse: ", res.status);
+        console.log("Usuario activo: " + this.authServ.UsuarioActivo);
+        this.authServ.UsuarioActivo = res.status >= 200 && res.status < 300;
+        console.log(val);
+      })
     }
     );
   }
