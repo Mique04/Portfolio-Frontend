@@ -40,14 +40,17 @@ export class RegistrarseComponent implements OnInit {
     console.log("Se llamó al método onEnviar de Registrarse.component");
     event.preventDefault();
     
-    this.authServ.Registrarse(this.form.value).subscribe(val => {
-      map((res: HttpResponse<any>) => {
-        console.log("Estado de la respuesta de la petición Registrarse: ", res.status);
-        console.log("Usuario activo: " + this.authServ.UsuarioActivo);
-        this.authServ.UsuarioActivo = res.status >= 200 && res.status < 300;
-        console.log(val);
-      })
-    }
+    this.authServ.Registrarse(this.form.value).subscribe(
+      (response) => {
+        this.authServ.activarUsuario();
+        console.log('Registro exitoso', response);
+        console.log("usuario activo: " + this.authServ.UsuarioActivo);
+      },
+      (error) => {
+        this.authServ.desactivarUsuario();
+        console.error('Error al registrar', error);
+        console.log("usuario activo: " + this.authServ.UsuarioActivo);
+      }
     );
   }
   
@@ -60,17 +63,4 @@ export class RegistrarseComponent implements OnInit {
       this.screenWidth = width;
     });
   } 
-} 
-
-/* (response: HttpResponse<any>) => {
-        console.log("El método onEnviar de Registrarse.component funciona correctamente");
-        console.log("Usuario activo: " + this.authServ.UsuarioActivo);
-        console.log("response.body: " + response.body);
-        console.log("response.status: " + response.status);
-        // Realizar acciones adicionales con la respuesta correcta...
-      },
-      (error) => {
-        console.error("El método onEnviar de Registrarse.component no funciona o hubo un problema en el servicio");
-        console.error('Error en la respuesta:', error);
-        // Realizar acciones adicionales para manejar el error...
-      } */
+}

@@ -32,16 +32,18 @@ export class IniciarSesionComponent implements OnInit{
   onEnviar(event: Event) {
     console.log("Se llamó al metodo onEnviar de IniciarSesion.component");
     event.preventDefault();
-    this.authServ.IniciarSesion(this.form.value).subscribe(val => {
-      map((res: HttpResponse<any>) => {
-        console.log("Estado de la respuesta de la petición iniciarSesion: ", res.status);
-        console.log("Usuario activo: " + this.authServ.UsuarioActivo);
-        this.authServ.UsuarioActivo = res.status >= 200 && res.status < 300;
-        console.log(val);
-      })
-    }
-    );
-  }
+    this.authServ.IniciarSesion(this.form.value).subscribe(
+      (response) => {
+        this.authServ.activarUsuario();
+        console.log('Registro exitoso', response);
+        console.log("usuario activo: " + this.authServ.UsuarioActivo);
+      },
+      (error) => {
+        this.authServ.desactivarUsuario();
+        console.error('Error al registrar', error);
+        console.log("usuario activo: " + this.authServ.UsuarioActivo);
+      }
+    );}
   
  
   ngOnInit() {

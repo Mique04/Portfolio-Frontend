@@ -12,6 +12,13 @@ export class AuthService {
   UsuarioActivo: boolean = false;
   alerta: Boolean = false;
 
+  activarUsuario(){
+    this.UsuarioActivo = true;
+  };
+  desactivarUsuario(){
+    this.UsuarioActivo = false;
+  };
+
   private API_URL = "https://portfolio-backend-v22r.onrender.com";
   currentUserSubjet: BehaviorSubject<any>;
   constructor(private Http:HttpClient) {
@@ -21,29 +28,11 @@ export class AuthService {
 
   Registrarse(credenciales: any): Observable<any> {
     console.log("Se llamó al método Registrarse de auth.service");
-  
-    return this.Http.post(`${this.API_URL}/new/persona`, credenciales, { observe: 'response' }).pipe(
-      map((res: HttpResponse<any>) => {
-        console.log("Estado de la respuesta de la petición registrarse:", res.status);
-  
-        this.UsuarioActivo = res.status >= 200 && res.status < 300;
-        return res.status;
-      })
-    );
+    return this.Http.post(`${this.API_URL}/new/persona`, credenciales, { observe: 'response' });
   }
-  
-  
 
   IniciarSesion(credenciales: any): Observable<any> {
     console.log("se llamó al metodo IniciarSesion, de auth.service");
-    return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' }).pipe(
-      map((res: HttpResponse<any>) => {
-        console.log("Estado de la respuesta de la petición IniciarSesion:" + res.status);
-        console.log("Cuerpo de la respuesta de la petición IniciarSesion:" + res.body);
-        
-        this.UsuarioActivo = res.status >= 200 && res.status < 300;
-        return res.status;
-      })
-    );
+    return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' });
   }
 }
