@@ -3,6 +3,7 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription, map, of, switchMap } from 'rxjs';
 import { AuthService } from 'src/app/Service/Authentication/auth.service';
+import { LoginRequest } from 'src/app/Service/Authentication/loginRequest';
 import { ResizeService } from 'src/app/Service/Resize/resize.service';
 
 @Component({
@@ -32,18 +33,27 @@ export class IniciarSesionComponent implements OnInit{
   onEnviar(event: Event) {
     console.log("Se llamó al metodo onEnviar de IniciarSesion.component");
     event.preventDefault();
-    this.authServ.IniciarSesion(this.form.value).subscribe(
-      (response) => {
+    if (this.form.valid){
+    this.authServ.IniciarSesion(this.form.value as LoginRequest).subscribe(
+      {next: (res) => {
         this.authServ.activarUsuario();
-        console.log('Registro exitoso', response);
-        console.log("usuario activo: " + this.authServ.UsuarioActivo);
+        console.log("el usuario activo es: " + this.authServ.UsuarioActivo);
+        console.log(res);
       },
-      (error) => {
+      error: (err) => {
         this.authServ.desactivarUsuario();
-        console.error('Error al registrar', error);
-        console.log("usuario activo: " + this.authServ.UsuarioActivo);
+        console.log("el usuario activo es: " + this.authServ.UsuarioActivo);
+        console.error(err);
+      },
+      complete: () => {
+        this.authServ.activarUsuario();
+        console.log("el usuario activo es: " + this.authServ.UsuarioActivo);
+        console.info("Login Completo");
+      },
       }
-    );}
+      );
+    }
+  }
   
  
   ngOnInit() {

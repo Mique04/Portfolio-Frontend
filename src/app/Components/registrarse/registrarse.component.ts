@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/Service/Authentication/auth.service';
 import { Subscription, map } from 'rxjs';
 import { ResizeService } from 'src/app/Service/Resize/resize.service';
 import { HttpResponse } from '@angular/common/http';
+import { LoginRequest } from 'src/app/Service/Authentication/loginRequest';
 
 @Component({
   selector: 'app-registrarse',
@@ -39,19 +40,26 @@ export class RegistrarseComponent implements OnInit {
   onEnviar(event: Event) {
     console.log("Se llamó al método onEnviar de Registrarse.component");
     event.preventDefault();
-    
-    this.authServ.Registrarse(this.form.value).subscribe(
-      (response) => {
+    if (this.form.valid){
+    this.authServ.Registrarse(this.form.value as LoginRequest).subscribe(
+      {next: (res) => {
         this.authServ.activarUsuario();
-        console.log('Registro exitoso', response);
-        console.log("usuario activo: " + this.authServ.UsuarioActivo);
+        console.log("el usuario activo es: " + this.authServ.UsuarioActivo);
+        console.log(res);
       },
-      (error) => {
+      error: (err) => {
         this.authServ.desactivarUsuario();
-        console.error('Error al registrar', error);
-        console.log("usuario activo: " + this.authServ.UsuarioActivo);
+        console.log("el usuario activo es: " + this.authServ.UsuarioActivo);
+        console.error(err);
+      },
+      complete: () => {
+        this.authServ.activarUsuario();
+        console.log("el usuario activo es: " + this.authServ.UsuarioActivo);
+        console.info("Login Completo");
+      },
       }
-    );
+      );
+    }
   }
   
   

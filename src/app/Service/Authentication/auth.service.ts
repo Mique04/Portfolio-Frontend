@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
+import { error } from 'jquery';
+import { LoginRequest } from './loginRequest';
 
 
 @Injectable({
@@ -26,13 +28,15 @@ export class AuthService {
     this.currentUserSubjet= new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}' ));
   }
 
-  Registrarse(credenciales: any): Observable<any> {
+  Registrarse(credenciales: LoginRequest): Observable<any> {
     console.log("Se llamó al método Registrarse de auth.service");
-    return this.Http.post(`${this.API_URL}/new/persona`, credenciales, { observe: 'response' });
+    console.log(credenciales);
+    return this.Http.post<boolean>(`${this.API_URL}/new/persona`, credenciales, { observe: 'response' });
   }
 
-  IniciarSesion(credenciales: any): Observable<any> {
+  IniciarSesion(credenciales: LoginRequest): Observable<any> {
     console.log("se llamó al metodo IniciarSesion, de auth.service");
-    return this.Http.post(`${this.API_URL}/validar/persona`, credenciales, { observe: 'response' });
+    console.log(credenciales);
+    return this.Http.post<boolean>(`${this.API_URL}/validar/persona`, credenciales);
   }
 }
