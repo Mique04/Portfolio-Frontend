@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ModoEdicionService } from 'src/app/Service/Modo-Edicion/modo-edicion.service';
+import { ResizeService } from 'src/app/Service/Resize/resize.service';
 
 @Component({
   selector: 'app-nav',
@@ -17,8 +19,11 @@ export class NavComponent implements OnInit {
   noMostrarLogin() {
     this.mostrarComponenteLogin = false;
   }
-  
-  constructor (public modoEdicion: ModoEdicionService){}
+   
+  screenWidth = 0;
+  private resizeSubscription: Subscription = new Subscription();
+
+  constructor (public modoEdicion: ModoEdicionService, private resizeService: ResizeService){}
 
 
   ajustarResponsive(): void {
@@ -55,6 +60,15 @@ export class NavComponent implements OnInit {
   
   // Llamar a la función cuando la página carga y cada vez que cambia el tamaño de la ventana
   ngOnInit() {
+
+    const initialWidth = this.resizeService.getScreenWidth();
+    if (initialWidth !== undefined) {
+      this.screenWidth = initialWidth;
+    }
+    this.resizeSubscription = this.resizeService.onResize().subscribe(width => {
+      this.screenWidth = width;
+    });
+    
     this.ajustarResponsive();
     window.addEventListener('resize', () => this.ajustarResponsive());
   }

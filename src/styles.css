@@ -87,9 +87,6 @@
 .bg-4 {
   background-color: #26272e;
 }
-
-
-
 .slide-right {
     opacity: 0;
     transform: translateX(-40%);
@@ -103,48 +100,12 @@
       transform: translateX(0%);
     }
   }
-  
-
-
   .anim-1 {
     background-image: url(../src/assets/Animaciones/mariano-werneck-lxlo92w-X7c-unsplash.jpg);
     background-size: cover;
     background-repeat: repeat;
     background-blend-mode:hue;
     animation: noise 7s infinite ease-in-out;
-    animation-direction: alternate;
-    animation-fill-mode: forwards;
-    z-index: 0;
-  }
-  
-  @keyframes noise {
-    0% {
-      background-color: #00000085;
-      background-position: 0 0;
-    }
-    20% {
-      background-color: rgb(0, 255, 0);
-    }
-    40% {
-      background-color: rgba(0, 0, 255, 0.459);
-    }
-    60% {
-      background-color: rgba(255, 0, 0, 0.452);
-    }
-    80% {
-      background-color: rgba(255, 255, 0, 0.486);
-    }
-    100% {
-      background-color: #ffffff6c;
-      background-position: 100% 100%;
-    }
-  }
-
-  .anim-2 {
-    background-image: url(../src/assets/Animaciones/mahdi-bafande-yvCzwf84amU-unsplash.jpg);
-    background-size: cover;
-    background-repeat: repeat;
-    animation: noise 10s infinite ease-in-out;
     animation-direction: alternate;
     animation-fill-mode: forwards;
     z-index: 0;

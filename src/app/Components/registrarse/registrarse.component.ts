@@ -44,7 +44,6 @@ export class RegistrarseComponent implements OnInit {
     this.authServ.Registrarse(this.form.value as LoginRequest).subscribe(
       {next: (res) => {
         this.authServ.activarUsuario();
-        console.log("el usuario activo es: " + this.authServ.UsuarioActivo);
         console.log(res);
       },
       error: (err) => {

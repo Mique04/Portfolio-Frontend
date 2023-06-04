@@ -2,10 +2,10 @@
   <div [ngClass]="screenWidth < 1300 ? (screenWidth < 900 ? 'h-75 w-75  p-3 centrarMidSmall' : (screenWidth < 600 ? 'h-100 w-100  p-1 centrarSmall' : 'h-75 w-50  p-3 centrarMidBig')) : 'h-75 w-50 p-3 centrarBig'"
   class="shadow1 rounded-5 bg-2 slide-right position-absolute"> 
       <button routerLink="/login" type="button" class="color2 p-2 m-1 mx-3 trans-color" id="volver">Volver</button>
-      <h1 class="text-big text-center color1 px-4 py-1">Iniciar Sesión</h1>
+      <h2 class="text-big text-center color1 px-4 py-1">Iniciar Sesión</h2>
       
         <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="my-3">
-          <div class="mb-3 p-3">
+          <div class="mb-3 p-3 m-1">
             <label for="exampleInputEmail1" class="form-label">Email</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName='email'
             [ngClass]="{'is-invalid': email?.errors && email?.touched, 'is-valid': !email?.errors && email?.touched}">
@@ -19,7 +19,7 @@
             </div>
           </div>
       
-          <div class="mb-3 p-3">
+          <div class="mb-3 p-3 m-1">
             <label for="exampleInputPassword1" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="exampleInputPassword1" formControlName='contraseña'
             [ngClass]="{'is-invalid': password?.errors && password?.touched, 'is-valid': !password?.errors && password?.touched}">
